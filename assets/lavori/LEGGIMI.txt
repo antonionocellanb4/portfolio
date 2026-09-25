@@ -1,0 +1,9 @@
+Foto dei lavori del portfolio.
+
+Un file per lavoro, col numero del lavoro come nome: 14.webp, 13.webp, ... 01.webp
+(i numeri sono in dati.js). Appena il file c'è, compare da solo nella card della home,
+nella miniatura dell'header, nel riquadro "Ultimo lavoro", nel pannello "Lavori",
+nelle card "Altri lavori" e nell'hero della scheda progetto.
+
+Misura consigliata: 1600 x 1000 px (16:10), formato webp.
+Per un nome o formato diverso: in dati.js aggiungere al lavoro img: 'assets/lavori/nome.jpg'.
