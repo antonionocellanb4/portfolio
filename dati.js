@@ -28,4 +28,4 @@ const workUrl = w => `progetto.html?id=${w.id}`;
 
 // Foto del lavoro: di base assets/lavori/<id>.webp (basta copiare lì il file), oppure img: '...' sul lavoro.
 // Se il file non c'è, l'immagine si toglie da sola e resta il riquadro grigio con l'etichetta.
-const workPic = w => `<img src="${w.img || `assets/lavori/${w.id}.webp`}" alt="${w.n}" loading="lazy" onerror="this.remove()">`;
+const workPic = (w, alt = w.n) => `<img src="${w.img || `assets/lavori/${w.id}.webp`}" alt="${alt}" loading="lazy" onerror="this.remove()">`;

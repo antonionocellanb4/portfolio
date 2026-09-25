@@ -143,6 +143,11 @@
 
   /* ---------- vetrina lavori a card impilate ---------- */
   .showcase { position: relative; padding: 0 0 80px; overflow: clip; }
+  /* fondo: foto del lavoro della card attiva, sfocata, in dissolvenza (senza foto resta scuro) */
+  .showcase .bg { position: sticky; top: 0; height: 100vh; height: 100svh; margin-bottom: -100vh; margin-bottom: -100svh; overflow: hidden; pointer-events: none; }
+  .showcase .bgi { position: absolute; inset: 0; opacity: 0; transition: opacity .8s ease; }
+  .showcase .bgi.on { opacity: 1; }
+  .showcase .bgi img { width: 100%; height: 100%; object-fit: cover; filter: blur(6px) brightness(.45) saturate(.9); transform: scale(1.12); }
   .showcase .intro { position: relative; text-align: center; padding-top: 120px; margin-bottom: 56px; }
   .showcase .intro h2 { font-size: clamp(36px, 4.4vw, 64px); margin-top: 14px; }
   .anchor { height: 0; scroll-margin-top: 110px; }
@@ -259,9 +264,15 @@
     .hdr { padding: 12px var(--gutter); }
     .brand .word { font-size: 18px; }
     .cluster .blk { min-width: 0; padding: 0 14px; }
-    .pcard { position: relative; top: 0; margin-bottom: 16px; }
+    /* anche su telefono le card si impilano: card compatta che sta tutta sotto l'header */
+    .pcard { top: 72px; margin-bottom: 24px; }
+    .pin { max-height: calc(100svh - 88px); overflow: hidden; }
+    .pin .code b { font-size: 48px; }
+    .pin h3 { margin-top: 14px; }
+    .strip { margin-top: 14px; }
+    .strip > div { padding: 8px 10px; }
     .pin { grid-template-columns: 1fr; }
-    .pin .media { aspect-ratio: 16 / 10; }
+    .pin .media { aspect-ratio: 16 / 9; }
     .buyrow { flex-wrap: wrap; margin-top: 18px; }
     .pin .actions { width: 100%; }
     .pin .actions .blk { flex: 1; }
@@ -291,12 +302,13 @@
     .manifesto .foot { flex-direction: column; align-items: flex-start; }
     .foot-grid > div:first-child { grid-column: 1 / -1; }
   }
+  @media (max-width: 900px) and (max-height: 740px) { .strip { display: none; } } /* telefoni bassi: senza griglia la card sta nello schermo */
   @media (prefers-reduced-motion: reduce) { .manifesto .w { color: var(--fg); } }
 </style>
 </head>
 <body>
 
-<div class="announce px">Disponibile per nuove esperienze nel digitale · Adelfia, Bari<a href="#contatti">Scrivimi</a></div>
+<div class="announce px">Disponibile per nuove esperienze nel digitale<a href="#contatti">Scrivimi</a></div>
 
 <header class="hdr" id="hdr">
   <a href="#" class="brand" aria-label="Antonio Nocella, home">
@@ -359,6 +371,7 @@
 
   <!-- LAVORI -->
   <section class="showcase" id="lavori">
+    <div class="bg" id="bg" aria-hidden="true"></div>
     <div class="intro wrap">
       <span class="px px-muted">Portfolio · 5 lavori scelti su 14</span>
       <h2>I lavori più recenti.</h2>
@@ -509,6 +522,7 @@
         </div>
       </div>
     </article>`).join('');
+  $('#bg').innerHTML = featured.map((w, i) => `<div class="bgi${i ? '' : ' on'}">${workPic(w, '')}</div>`).join('');
   $('#thumbs').innerHTML = featured.map(w => `<button class="ph" data-go="${w.id}" aria-label="${w.n}">${w.id}${workPic(w)}</button>`).join('');
   $('#workList').innerHTML = works.map(w => `<a href="${workUrl(w)}" class="line-item"><span class="ph">${workPic(w)}</span><div><strong>${w.n}</strong><span class="px px-muted">${w.t.join(' · ')}</span></div><span class="px">${w.id}</span></a>`).join('');
   // riquadro "Ultimo lavoro" nell'hero: il primo dell'elenco
@@ -535,23 +549,25 @@
     stack();
   };
 
-  // card impilate: la card coperta si rimpicciolisce e scurisce
+  // card impilate (anche su telefono): la card coperta si rimpicciolisce e scurisce
   const cards = [...document.querySelectorAll('.pcard')];
   const thumbs = [...document.querySelectorAll('#thumbs button')];
+  const bgs = [...document.querySelectorAll('#bg .bgi')];
   function stack() {
-    const desktop = innerWidth > 900;
-    let active = 0;
+    let active = 0, entering = 0;
     cards.forEach((c, i) => {
       const pin = c.firstElementChild, next = cards[i + 1];
       const r = c.getBoundingClientRect();
       if (r.top <= 120) active = i;
-      if (!desktop || !next) { pin.style.transform = ''; pin.style.filter = ''; return; }
+      if (r.top < innerHeight * .5) entering = i; // il fondo cambia quando la card supera metà schermo
+      if (!next) { pin.style.transform = ''; pin.style.filter = ''; return; }
       const n = next.getBoundingClientRect();
       const p = Math.min(Math.max((r.bottom - n.top) / r.height, 0), 1);
       pin.style.transform = `scale(${1 - p * 0.06})`;
       pin.style.filter = `brightness(${1 - p * 0.55})`;
     });
     thumbs.forEach((t, i) => t.classList.toggle('active', i === active));
+    bgs.forEach((b, i) => b.classList.toggle('on', i === entering));
   }
   // coordinate da editor e "sei qui" sul righello: valori veri dello schermo (la misura del titolo la tiene editor.js)
   const coords = $('#coords');
