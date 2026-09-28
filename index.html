@@ -6,23 +6,23 @@
 <title>Antonio Nocella — Web developer e UI designer</title>
 <meta name="description" content="Antonio Nocella, web developer e UI designer a Bari. Siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI.">
 <meta name="author" content="Antonio Nocella">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
 <style>
   :root {
     /* struttura e stile presi dallo shop Blackshape (home-2), contenuti del portfolio */
-    --bg: #0B0B0C;
+    --bg: #050505;
     --panel: #121214;
     --panel-2: #1D1D1F;
-    --fg: #F5F5F7;
+    --fg: #FFFFFF;
     --soft: #C7C7CC;
     --muted: #A1A1A6;
     --line: rgba(255,255,255,.12);
     --white: #FFF;
-    --black: #000;
-    --or: #F04423;  /* arancione del portfolio v2 */
+    --black: #050505;  /* testo sui fondi verdi e bianchi */
+    --accent: #D7FFE0;  /* verde menta: titoli e accenti */
     --radius: 6px;
     --control-radius: 999px;
     --gutter: clamp(16px, 3vw, 40px);
@@ -37,7 +37,7 @@
   a { color: inherit; text-decoration: none; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
   .wrap { max-width: 1520px; margin: 0 auto; padding: 0 var(--gutter); }
-  h1, h2, h3 { font-weight: 500; letter-spacing: -0.05em; line-height: .95; }
+  h1, h2, h3 { font-weight: 500; color: var(--accent); letter-spacing: -0.05em; line-height: .95; }
 
   /* etichette: font pixel, maiuscolo spaziato (VT323 è piccolo di suo: corpo più alto) */
   .px { font-family: var(--pixel); font-size: 19px; font-weight: 400; line-height: 1.1; text-transform: uppercase; letter-spacing: .04em; }
@@ -52,24 +52,24 @@
   /* blocchi (bottoni) */
   .blk { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: var(--blk); padding: 0 24px; border-radius: var(--control-radius); font-family: var(--pixel); font-size: 21px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; transition: background .2s, color .2s; }
   .blk-light { background: var(--white); color: var(--black); }
-  .blk-light:hover, .blk-dark:hover { background: var(--or); color: var(--black); }
-  /* azione principale: arancione pieno, testo nero per il contrasto */
-  .blk-or { background: var(--or); color: var(--black); }
-  .blk-or:hover { background: #FF6A4D; }
-  ::selection { background: var(--or); color: var(--black); }
-  :focus-visible { outline: 2px solid var(--or); outline-offset: 3px; }
+  .blk-light:hover, .blk-dark:hover { background: var(--accent); color: var(--black); }
+  /* azione principale: verde pieno, testo nero per il contrasto */
+  .blk-accent { background: var(--accent); color: var(--black); }
+  .blk-accent:hover { background: #FFFFFF; }
+  ::selection { background: var(--accent); color: var(--black); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .asc { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
   .blk-dark { background: var(--panel-2); color: var(--fg); }
 
   /* ---------- barra annunci ---------- */
-  .announce { position: relative; z-index: 60; background: var(--or); text-align: center; padding: 9px var(--gutter); padding-top: calc(9px + env(safe-area-inset-top)); color: var(--black); }
+  .announce { position: relative; z-index: 60; background: var(--accent); text-align: center; padding: 9px var(--gutter); padding-top: calc(9px + env(safe-area-inset-top)); color: var(--black); }
   .announce a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; }
 
   /* ---------- header ---------- */
   .hdr { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; pointer-events: none; transition: top .3s; }
   .hdr > * { pointer-events: auto; }
   .hdr::before { content: ""; position: absolute; inset: 0 0 -72px 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .35s ease;
-    background: linear-gradient(180deg, rgba(11,11,12,.92) 0%, rgba(11,11,12,.9) 30%, rgba(11,11,12,.84) 42%, rgba(11,11,12,.74) 52%, rgba(11,11,12,.6) 61%, rgba(11,11,12,.45) 70%, rgba(11,11,12,.3) 78%, rgba(11,11,12,.17) 86%, rgba(11,11,12,.07) 93%, rgba(11,11,12,0) 100%);
+    background: linear-gradient(180deg, rgba(5,5,5,.92) 0%, rgba(5,5,5,.9) 30%, rgba(5,5,5,.84) 42%, rgba(5,5,5,.74) 52%, rgba(5,5,5,.6) 61%, rgba(5,5,5,.45) 70%, rgba(5,5,5,.3) 78%, rgba(5,5,5,.17) 86%, rgba(5,5,5,.07) 93%, rgba(5,5,5,0) 100%);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); }
   .hdr.solid::before { opacity: 1; }
@@ -82,7 +82,7 @@
   .thumbs.on { opacity: 1; visibility: visible; transform: none; }
   .thumbs button { width: 46px; height: 52px; border-radius: 4px; overflow: hidden; opacity: .55; transition: opacity .2s, outline-color .2s; outline: 2px solid transparent; outline-offset: -2px; font-family: var(--pixel); font-size: 16px; }
   .thumbs button:hover { opacity: .85; }
-  .thumbs button.active { opacity: 1; outline-color: var(--or); }
+  .thumbs button.active { opacity: 1; outline-color: var(--accent); }
   .thumbs .ph::after { content: none; }
 
   /* ---------- pannelli laterali (lavori e contatti) ---------- */
@@ -129,16 +129,16 @@
   .feature-box .blk { --blk: 40px; padding: 0 16px; font-size: 19px; }
   .hero-cta { grid-column: 1 / -1; grid-row: 3; display: flex; justify-content: center; margin-top: 28px; }
   /* titolo selezionato come in Figma: cornice, maniglie agli angoli, nome del livello e misure */
-  .sel { position: relative; display: inline-block; margin-top: 44px; outline: 1px solid var(--or); outline-offset: 10px; }
+  .sel { position: relative; display: inline-block; margin-top: 44px; outline: 1px solid var(--accent); outline-offset: 10px; }
   .hero-grid .title .sel h1 { margin-top: 0; }
   @media (min-width: 901px) { .hero-grid .title .sel h1 { white-space: nowrap; } } /* le due righe restano due anche ingrandendo */
-  .sel i { position: absolute; width: 9px; height: 9px; background: var(--white); border: 1px solid var(--or); }
+  .sel i { position: absolute; width: 9px; height: 9px; background: var(--white); border: 1px solid var(--accent); }
   .sel i:nth-of-type(1) { left: -15px; top: -15px; }
   .sel i:nth-of-type(2) { right: -15px; top: -15px; }
   .sel i:nth-of-type(3) { left: -15px; bottom: -15px; }
   .sel i:nth-of-type(4) { right: -15px; bottom: -15px; }
-  .sel-tag { position: absolute; left: -16px; bottom: calc(100% + 18px); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--or); color: var(--black); white-space: nowrap; }
-  .sel-size { position: absolute; left: 50%; top: calc(100% + 20px); transform: translateX(-50%); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--or); color: var(--black); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .sel-tag { position: absolute; left: -16px; bottom: calc(100% + 18px); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--accent); color: var(--black); white-space: nowrap; }
+  .sel-size { position: absolute; left: 50%; top: calc(100% + 20px); transform: translateX(-50%); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--accent); color: var(--black); white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 
   /* ---------- vetrina lavori a card impilate ---------- */
@@ -158,7 +158,7 @@
   /* scheda a "strip di volo": numero grande, campi in griglia */
   .pin .info { display: flex; flex-direction: column; min-height: 0; padding: 8px 8px 4px; }
   .pin .code { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
-  .pin .code b { color: var(--or); font-size: clamp(56px, 6vw, 96px); font-weight: 500; letter-spacing: -0.06em; line-height: .82; font-variant-numeric: tabular-nums; }
+  .pin .code b { color: var(--accent); font-size: clamp(56px, 6vw, 96px); font-weight: 500; letter-spacing: -0.06em; line-height: .82; font-variant-numeric: tabular-nums; }
   .pin .code .px { text-align: right; max-width: 18ch; }
   .pin h3 { font-size: clamp(30px, 3vw, 46px); letter-spacing: -0.05em; line-height: 1; margin-top: 20px; }
   .strip { display: grid; grid-template-columns: 1fr 1fr; margin-top: 20px; border: 1px solid var(--line); border-radius: 4px; }
@@ -187,12 +187,12 @@
   .bp-mark { position: absolute; bottom: -1px; width: 1px; height: 22px; background: var(--fg); }
   .bp-mark span { position: absolute; top: calc(100% + 8px); right: 0; font-family: var(--pixel); font-size: 17px; line-height: 1.1; text-transform: uppercase; color: var(--muted); white-space: nowrap; text-align: right; }
   .bp-mark b { display: block; font-weight: 400; color: var(--fg); }
-  .bp-now { position: absolute; bottom: -1px; width: 1px; height: 40px; background: var(--or); transition: left .3s; }
-  .bp-now span { position: absolute; bottom: calc(100% + 4px); left: 0; transform: translateX(-50%); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--or); color: var(--black); white-space: nowrap; }
+  .bp-now { position: absolute; bottom: -1px; width: 1px; height: 40px; background: var(--accent); transition: left .3s; }
+  .bp-now span { position: absolute; bottom: calc(100% + 4px); left: 0; transform: translateX(-50%); font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--accent); color: var(--black); white-space: nowrap; }
   .numbers { position: relative; max-width: 920px; margin: 88px auto 0; display: grid; grid-template-columns: repeat(5, 1fr); border: 1px solid var(--line); border-radius: 4px; background: var(--bg); }
   .numbers > div { padding: 14px 16px; }
   .numbers > div + div { border-left: 1px solid var(--line); }
-  .numbers dd { color: var(--or); font-size: clamp(32px, 3.4vw, 48px); font-weight: 500; letter-spacing: -0.05em; line-height: 1; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .numbers dd { color: var(--accent); font-size: clamp(32px, 3.4vw, 48px); font-weight: 500; letter-spacing: -0.05em; line-height: 1; margin-top: 10px; font-variant-numeric: tabular-nums; }
   .manifesto .foot { position: relative; max-width: 920px; margin: 48px auto 0; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
 
   /* ---------- metodo + servizi ---------- */
@@ -364,7 +364,7 @@
           </div>
         </article>
       </div>
-      <div class="hero-cta"><a href="#lavori" class="blk blk-or">Guarda i lavori <span>↓</span></a></div>
+      <div class="hero-cta"><a href="#lavori" class="blk blk-accent">Guarda i lavori <span>↓</span></a></div>
     </div>
   </section>
 
@@ -452,7 +452,7 @@
           <span class="px">Contatti · Lavoro anche da remoto</span>
           <h2>Portiamoli dentro una squadra.</h2>
           <div class="ctas">
-            <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-or">Scrivimi <span>↗</span></a>
+            <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-accent">Scrivimi <span>↗</span></a>
             <a href="tel:+393921939479" class="blk blk-dark">+39 392 193 9479</a>
           </div>
           <small>antonio.nocella3@gmail.com · Adelfia, Bari</small>

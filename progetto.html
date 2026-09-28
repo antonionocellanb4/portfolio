@@ -5,23 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Antonio Nocella — Progetto</title>
 <meta name="description" content="Scheda progetto dal portfolio di Antonio Nocella, web developer e UI designer a Bari.">
-<meta name="theme-color" content="#0B0B0C">
+<meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=VT323&display=swap" rel="stylesheet">
 <style>
   /* stessi token di index.html; struttura della scheda presa da prodotto.html dello shop Blackshape */
   :root {
-    --bg: #0B0B0C;
+    --bg: #050505;
     --panel: #121214;
     --panel-2: #1D1D1F;
-    --fg: #F5F5F7;
+    --fg: #FFFFFF;
     --soft: #C7C7CC;
     --muted: #A1A1A6;
     --line: rgba(255,255,255,.12);
     --white: #FFF;
-    --black: #000;
-    --or: #F04423;  /* arancione del portfolio v2 */
+    --black: #050505;  /* testo sui fondi verdi e bianchi */
+    --accent: #D7FFE0;  /* verde menta: titoli e accenti */
     --radius: 6px;
     --control-radius: 999px;
     --gutter: clamp(16px, 3vw, 40px);
@@ -36,18 +36,18 @@
   a { color: inherit; text-decoration: none; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
   .wrap { max-width: 1520px; margin: 0 auto; padding: 0 var(--gutter); }
-  h1, h2, h3 { font-weight: 500; letter-spacing: -0.05em; line-height: .95; }
+  h1, h2, h3 { font-weight: 500; color: var(--accent); letter-spacing: -0.05em; line-height: .95; }
   .px { font-family: var(--pixel); font-size: 19px; font-weight: 400; line-height: 1.1; text-transform: uppercase; letter-spacing: .04em; }
   .px-muted { color: #B5B5BA; }
   .todo { color: var(--muted); font-style: italic; }
   .blk { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: var(--blk); padding: 0 24px; border-radius: var(--control-radius); font-family: var(--pixel); font-size: 21px; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; transition: background .2s, color .2s; }
   .blk-light { background: var(--white); color: var(--black); }
-  .blk-light:hover, .blk-dark:hover { background: var(--or); color: var(--black); }
-  /* azione principale: arancione pieno, testo nero per il contrasto */
-  .blk-or { background: var(--or); color: var(--black); }
-  .blk-or:hover { background: #FF6A4D; }
-  ::selection { background: var(--or); color: var(--black); }
-  :focus-visible { outline: 2px solid var(--or); outline-offset: 3px; }
+  .blk-light:hover, .blk-dark:hover { background: var(--accent); color: var(--black); }
+  /* azione principale: verde pieno, testo nero per il contrasto */
+  .blk-accent { background: var(--accent); color: var(--black); }
+  .blk-accent:hover { background: #FFFFFF; }
+  ::selection { background: var(--accent); color: var(--black); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .asc { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
   .blk-dark { background: var(--panel-2); color: var(--fg); }
   /* fondi "da editor" al posto della carta aeronautica: griglia di progetto e box model; la mappa del sito è una figura nei dettagli */
@@ -61,12 +61,12 @@
   .ph:has(> img)::after { content: none; }
 
   /* ---------- barra annunci + header (come index) ---------- */
-  .announce { position: relative; z-index: 60; background: var(--or); text-align: center; padding: 9px var(--gutter); padding-top: calc(9px + env(safe-area-inset-top)); color: var(--black); }
+  .announce { position: relative; z-index: 60; background: var(--accent); text-align: center; padding: 9px var(--gutter); padding-top: calc(9px + env(safe-area-inset-top)); color: var(--black); }
   .announce a { color: var(--black); text-decoration: underline; text-underline-offset: 3px; margin-left: 8px; }
   .hdr { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: 16px var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 16px; pointer-events: none; }
   .hdr > * { pointer-events: auto; }
   .hdr::before { content: ""; position: absolute; inset: 0 0 -72px 0; z-index: -1; pointer-events: none; opacity: 0; transition: opacity .35s ease;
-    background: linear-gradient(180deg, rgba(11,11,12,.92) 0%, rgba(11,11,12,.9) 30%, rgba(11,11,12,.84) 42%, rgba(11,11,12,.74) 52%, rgba(11,11,12,.6) 61%, rgba(11,11,12,.45) 70%, rgba(11,11,12,.3) 78%, rgba(11,11,12,.17) 86%, rgba(11,11,12,.07) 93%, rgba(11,11,12,0) 100%);
+    background: linear-gradient(180deg, rgba(5,5,5,.92) 0%, rgba(5,5,5,.9) 30%, rgba(5,5,5,.84) 42%, rgba(5,5,5,.74) 52%, rgba(5,5,5,.6) 61%, rgba(5,5,5,.45) 70%, rgba(5,5,5,.3) 78%, rgba(5,5,5,.17) 86%, rgba(5,5,5,.07) 93%, rgba(5,5,5,0) 100%);
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); }
   .hdr.solid::before { opacity: 1; }
@@ -112,7 +112,7 @@
   .chips { display: flex; gap: 6px; }
   .chips span { font-family: var(--pixel); font-size: 17px; text-transform: uppercase; letter-spacing: .04em; color: var(--soft); padding: 2px 10px; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; }
   .nav-link { font-size: 15px; font-weight: 500; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
-  .buy .num { color: var(--or); font-size: 26px; font-weight: 500; letter-spacing: -0.03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .buy .num { color: var(--accent); font-size: 26px; font-weight: 500; letter-spacing: -0.03em; white-space: nowrap; font-variant-numeric: tabular-nums; }
 
   /* ---------- hero progetto ---------- */
   .p-hero { position: relative; height: calc(100vh - var(--ann, 37px)); height: calc(100svh - var(--ann, 37px)); min-height: 600px; overflow: hidden; background: var(--black); }
@@ -135,7 +135,7 @@
   .gallery-thumbs { position: absolute; z-index: 2; left: var(--gutter); top: 50%; transform: translateY(-50%); display: flex; flex-direction: column; gap: 8px; }
   .gallery-thumbs button { width: 92px; height: 92px; border-radius: 4px; outline: 2px solid transparent; outline-offset: 2px; transition: outline-color .2s; font-family: var(--pixel); font-size: 20px; color: #6E6E73; }
   .gallery-thumbs button::after { content: none; }
-  .gallery-thumbs button[aria-pressed="true"] { outline-color: var(--or); }
+  .gallery-thumbs button[aria-pressed="true"] { outline-color: var(--accent); }
 
   /* ---------- scheda progetto ---------- */
   .specs { position: relative; padding: clamp(120px, 14vw, 200px) 0 clamp(120px, 12vw, 180px); overflow: hidden; }
@@ -170,7 +170,7 @@
   .det-head { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 24px; margin-bottom: 56px; }
   .sitemap { width: 100%; height: auto; }
   .sitemap a rect { transition: stroke .2s, stroke-opacity .2s; }
-  .sitemap a:hover rect, .sitemap a:focus-visible rect { stroke: var(--or); stroke-opacity: 1; }
+  .sitemap a:hover rect, .sitemap a:focus-visible rect { stroke: var(--accent); stroke-opacity: 1; }
   .sitemap a:focus { outline: none; }
   .det-grid { position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
   .det { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; display: flex; flex-direction: column; }
@@ -194,12 +194,12 @@
   .reviews { position: relative; padding: clamp(100px, 12vw, 160px) 0; border-top: 1px solid var(--line); overflow: hidden; }
   /* frame vuoto come in Figma: il prossimo lavoro ancora da disegnare */
   .newframe { position: relative; text-align: center; max-width: 880px; margin: 0 auto; padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 64px); border: 1px dashed rgba(255,255,255,.3); background: repeating-linear-gradient(135deg, rgba(255,255,255,.02) 0 1px, transparent 1px 14px); }
-  .newframe i { position: absolute; width: 9px; height: 9px; background: var(--white); border: 1px solid var(--or); }
+  .newframe i { position: absolute; width: 9px; height: 9px; background: var(--white); border: 1px solid var(--accent); }
   .newframe i:nth-of-type(1) { left: -5px; top: -5px; }
   .newframe i:nth-of-type(2) { right: -5px; top: -5px; }
   .newframe i:nth-of-type(3) { left: -5px; bottom: -5px; }
   .newframe i:nth-of-type(4) { right: -5px; bottom: -5px; }
-  .nf-tag, .nf-size { position: absolute; font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--or); color: var(--black); white-space: nowrap; }
+  .nf-tag, .nf-size { position: absolute; font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--accent); color: var(--black); white-space: nowrap; }
   .nf-tag { left: -1px; bottom: calc(100% + 10px); }
   .nf-size { left: 50%; top: calc(100% + 12px); transform: translateX(-50%); }
   .reviews h2 { font-size: clamp(40px, 5vw, 76px); letter-spacing: -0.06em; margin-top: 16px; }
@@ -341,7 +341,7 @@
   <div><strong class="name" id="buyName"></strong><span class="px px-muted">Online</span></div>
   <div class="chips-cell"><span class="chips" id="chips"></span></div>
   <div class="nav-cell"><a class="nav-link" id="prevLink">← Precedente</a><a class="nav-link" id="nextLink">Successivo →</a></div>
-  <div class="action-cell"><span class="num" id="buyNum"></span><a class="blk blk-or" id="actionBtn"></a></div>
+  <div class="action-cell"><span class="num" id="buyNum"></span><a class="blk blk-accent" id="actionBtn"></a></div>
 </div>
 
 <main>
@@ -375,7 +375,7 @@
 
   <section class="details">
     <div class="wrap">
-      <div class="det-head"><h2>Il progetto, schermata per schermata.</h2><svg class="sitemap" viewBox="0 0 780 370" role="navigation" aria-label="Mappa del sito"><path d="M380 57V95H110V133" fill="none" stroke="#F04423" stroke-opacity="0.7"/><path d="M380 57V95H290V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M380 57V95H470V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M380 57V95H650V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M110 167V205H75V243" fill="none" stroke="#F04423" stroke-opacity="0.7"/><path d="M110 167V205H215V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M290 167V205H350V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M650 167V205H650V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M75 277V340H560" fill="none" stroke="#F04423" stroke-opacity=".6" stroke-dasharray="5 5"/><text x="570" y="345" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.45" text-anchor="start">sitemap.xml · 14 lavori</text><a href="index.html"  aria-label="/"><rect x="361.4" y="23" width="37.2" height="34" rx="5" fill="#121214" stroke="#F04423" stroke-opacity="0.9"/><text x="380" y="45" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/</text></a><a href="index.html#lavori"  aria-label="/lavori"><rect x="63.800000000000004" y="133" width="92.39999999999999" height="34" rx="5" fill="#121214" stroke="#F04423" stroke-opacity="0.9"/><text x="110" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/lavori</text></a><a href="index.html#servizi"  aria-label="/servizi"><rect x="239.2" y="133" width="101.6" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="290" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/servizi</text></a><a href="index.html#competenze"  aria-label="/competenze"><rect x="405.4" y="133" width="129.2" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="470" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/competenze</text></a><a href="index.html#percorso"  aria-label="/percorso"><rect x="594.6" y="133" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="650" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/percorso</text></a><a href="#"  aria-label="/lavori/:id"><rect x="10.400000000000006" y="243" width="129.2" height="34" rx="5" fill="#121214" stroke="#F04423" stroke-opacity="0.9"/><text x="75" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/lavori/:id</text></a><a href="#" data-open="work" aria-label="/lavori/…"><rect x="159.6" y="243" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="215" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/lavori/…</text></a><a href="progetto.html?id=03"  aria-label="/servizi/3d"><rect x="285.4" y="243" width="129.2" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="350" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/servizi/3d</text></a><a href="#contatti"  aria-label="/contatti"><rect x="594.6" y="243" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="650" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/contatti</text></a></svg></div>
+      <div class="det-head"><h2>Il progetto, schermata per schermata.</h2><svg class="sitemap" viewBox="0 0 780 370" role="navigation" aria-label="Mappa del sito"><path d="M380 57V95H110V133" fill="none" stroke="#D7FFE0" stroke-opacity="0.7"/><path d="M380 57V95H290V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M380 57V95H470V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M380 57V95H650V133" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M110 167V205H75V243" fill="none" stroke="#D7FFE0" stroke-opacity="0.7"/><path d="M110 167V205H215V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M290 167V205H350V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M650 167V205H650V243" fill="none" stroke="#fff" stroke-opacity="0.22"/><path d="M75 277V340H560" fill="none" stroke="#D7FFE0" stroke-opacity=".6" stroke-dasharray="5 5"/><text x="570" y="345" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.45" text-anchor="start">sitemap.xml · 14 lavori</text><a href="index.html"  aria-label="/"><rect x="361.4" y="23" width="37.2" height="34" rx="5" fill="#121214" stroke="#D7FFE0" stroke-opacity="0.9"/><text x="380" y="45" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/</text></a><a href="index.html#lavori"  aria-label="/lavori"><rect x="63.800000000000004" y="133" width="92.39999999999999" height="34" rx="5" fill="#121214" stroke="#D7FFE0" stroke-opacity="0.9"/><text x="110" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/lavori</text></a><a href="index.html#servizi"  aria-label="/servizi"><rect x="239.2" y="133" width="101.6" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="290" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/servizi</text></a><a href="index.html#competenze"  aria-label="/competenze"><rect x="405.4" y="133" width="129.2" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="470" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/competenze</text></a><a href="index.html#percorso"  aria-label="/percorso"><rect x="594.6" y="133" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="650" y="155" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/percorso</text></a><a href="#"  aria-label="/lavori/:id"><rect x="10.400000000000006" y="243" width="129.2" height="34" rx="5" fill="#121214" stroke="#D7FFE0" stroke-opacity="0.9"/><text x="75" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.95" text-anchor="middle">/lavori/:id</text></a><a href="#" data-open="work" aria-label="/lavori/…"><rect x="159.6" y="243" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="215" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/lavori/…</text></a><a href="progetto.html?id=03"  aria-label="/servizi/3d"><rect x="285.4" y="243" width="129.2" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="350" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/servizi/3d</text></a><a href="#contatti"  aria-label="/contatti"><rect x="594.6" y="243" width="110.8" height="34" rx="5" fill="#121214" stroke="#fff" stroke-opacity="0.28"/><text x="650" y="265" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="15" fill="#fff" fill-opacity="0.62" text-anchor="middle">/contatti</text></a></svg></div>
       <div class="det-grid" id="details"></div>
     </div>
   </section>
@@ -393,7 +393,7 @@
         <span class="px px-muted">Prossimo progetto</span>
         <h2 data-editable>Il prossimo può essere il&nbsp;tuo.</h2>
         <p>Aerei, capannoni, case in legno, macchinari: se quello che vendi è difficile da spiegare, parliamone.</p>
-        <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-or">Scrivimi <span>↗</span></a>
+        <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-accent">Scrivimi <span>↗</span></a>
       </div>
     </div>
   </section>
@@ -431,7 +431,7 @@
           <span class="px">Contatti · Lavoro anche da remoto</span>
           <h2>Portiamoli dentro una squadra.</h2>
           <div class="ctas">
-            <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-or">Scrivimi <span>↗</span></a>
+            <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-accent">Scrivimi <span>↗</span></a>
             <a href="tel:+393921939479" class="blk blk-dark">+39 392 193 9479</a>
           </div>
           <small>antonio.nocella3@gmail.com · Adelfia, Bari</small>

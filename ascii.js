@@ -16,11 +16,11 @@
     }
     return stops[0][1];
   }
-  const RAMP_HOT = [ // dal rosso cupo all'arancio pieno, fino al bianco
-    [0.00, [78, 16, 8]], [0.16, [146, 30, 14]], [0.32, [206, 52, 24]], [0.46, [240, 68, 35]],
-    [0.60, [252, 118, 50]], [0.72, [255, 158, 96]], [0.86, [246, 204, 170]], [1.00, [234, 234, 230]],
+  const RAMP_HOT = [ // dal verde scuro al verde menta, fino al bianco
+    [0.00, [6, 26, 14]], [0.16, [14, 58, 32]], [0.32, [30, 104, 62]], [0.46, [70, 160, 104]],
+    [0.60, [130, 214, 158]], [0.72, [178, 240, 196]], [0.86, [215, 255, 224]], [1.00, [240, 250, 244]],
   ];
-  const RAMP_COLD = [[0.00, [196, 92, 54]], [0.30, [132, 130, 126]], [1.00, [206, 206, 206]]]; // caldo solo sul bordo
+  const RAMP_COLD = [[0.00, [120, 190, 140]], [0.30, [132, 130, 126]], [1.00, [206, 206, 206]]]; // verde solo sul bordo
 
   // masse che si muovono con frequenze diverse e si fondono: la forma non si ripete
   function blobField(st, octx, cols, rows, t, n, gain) {
@@ -95,7 +95,7 @@
     if (!reduce) requestAnimationFrame(loop);
   }
 
-  // hot: bagliore arancione con venature che scendono; cold: grigio, quasi fermo
+  // hot: bagliore verde con venature che scendono; cold: grigio, quasi fermo
   const kinds = {
     hot: st => [(octx, cols, rows, t) => {
       blobField(st, octx, cols, rows, t, 5, 0.82);

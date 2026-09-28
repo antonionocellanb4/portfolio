@@ -17,15 +17,15 @@ const EDITOR = {
     [data-resize] > i::before { content: ""; position: absolute; inset: -10px; }
     .settling, .settling > h1, .settling > h2 { transition: width .5s cubic-bezier(.2,.8,.2,1), min-height .5s cubic-bezier(.2,.8,.2,1), font-size .5s cubic-bezier(.2,.8,.2,1); }
     [data-editable] { cursor: text; }
-    [data-editable][contenteditable="true"] { outline: none; caret-color: var(--or); }
+    [data-editable][contenteditable="true"] { outline: none; caret-color: var(--accent); }
     .bp-now { cursor: ew-resize; touch-action: none; }
     .bp-now::before { content: ""; position: absolute; inset: -6px -14px; }
-    .bp-preview { position: absolute; left: 0; bottom: calc(100% + 64px); height: 300px; background: #000; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; z-index: 3; }
+    .bp-preview { position: absolute; left: 0; bottom: calc(100% + 64px); height: 300px; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; opacity: 0; visibility: hidden; transition: opacity .25s, visibility .25s; z-index: 3; }
     .bp-preview.open { opacity: 1; visibility: visible; }
     .bp-preview iframe { display: block; border: 0; transform-origin: 0 0; pointer-events: none; }
     html.inspecting, html.inspecting * { cursor: crosshair !important; }
-    .ins-box { position: fixed; z-index: 200; display: none; pointer-events: none; outline: 1px solid var(--or); }
-    .ins-box span, .ins-pill { font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--or); color: var(--black); white-space: nowrap; }
+    .ins-box { position: fixed; z-index: 200; display: none; pointer-events: none; outline: 1px solid var(--accent); }
+    .ins-box span, .ins-pill { font-family: var(--pixel); font-size: 16px; line-height: 1; padding: 3px 6px 2px; border-radius: 3px; background: var(--accent); color: var(--black); white-space: nowrap; }
     .ins-box span { position: absolute; left: -1px; bottom: calc(100% + 4px); }
     .ins-pill { position: fixed; z-index: 201; left: 50%; top: 88px; transform: translateX(-50%); display: none; }
     html.inspecting .ins-pill { display: block; }
