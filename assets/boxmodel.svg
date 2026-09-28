@@ -20,6 +20,6 @@
 <rect x="260" y="180" width="920" height="540" fill="none" stroke="#fff" stroke-opacity="0.09" />
 <text x="270" y="198" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" fill="#fff" fill-opacity="0.26" >content</text>
 <text x="720" y="708" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="11" fill="#fff" fill-opacity="0.3" text-anchor="middle">760 × auto</text>
-<line x1="0" y1="450" x2="1440" y2="450" stroke="#D7FFE0" stroke-opacity=".32" stroke-dasharray="6 6"/>
-<line x1="720" y1="0" x2="720" y2="900" stroke="#D7FFE0" stroke-opacity=".32" stroke-dasharray="6 6"/>
+<line x1="0" y1="450" x2="1440" y2="450" stroke="#FF9030" stroke-opacity=".32" stroke-dasharray="6 6"/>
+<line x1="720" y1="0" x2="720" y2="900" stroke="#FF9030" stroke-opacity=".32" stroke-dasharray="6 6"/>
 </svg>

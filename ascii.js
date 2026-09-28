@@ -1,26 +1,9 @@
 // Campi ASCII presi dal portfolio v2: una griglia di caratteri al posto dei pixel.
 // Uso: <canvas class="asc" data-ascii="hot|cold"></canvas> dentro un contenitore posizionato.
+// Il colore dei caratteri è il `color` CSS del canvas (di base il testo della sezione): funziona su fondi chiari e scuri.
 (function () {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const CH = ' .-+*^$#@';
-
-  // rampa di colore a più fermate
-  function ramp(stops, t) {
-    t = t < 0 ? 0 : (t > 1 ? 1 : t);
-    for (let i = 1; i < stops.length; i++) {
-      if (t <= stops[i][0] || i === stops.length - 1) {
-        const a = stops[i - 1], b = stops[i];
-        const k = Math.min(Math.max((t - a[0]) / ((b[0] - a[0]) || 1), 0), 1);
-        return [0, 1, 2].map(j => Math.round(a[1][j] + (b[1][j] - a[1][j]) * k));
-      }
-    }
-    return stops[0][1];
-  }
-  const RAMP_HOT = [ // dal verde scuro al verde menta, fino al bianco
-    [0.00, [6, 26, 14]], [0.16, [14, 58, 32]], [0.32, [30, 104, 62]], [0.46, [70, 160, 104]],
-    [0.60, [130, 214, 158]], [0.72, [178, 240, 196]], [0.86, [215, 255, 224]], [1.00, [240, 250, 244]],
-  ];
-  const RAMP_COLD = [[0.00, [120, 190, 140]], [0.30, [132, 130, 126]], [1.00, [206, 206, 206]]]; // verde solo sul bordo
 
   // masse che si muovono con frequenze diverse e si fondono: la forma non si ripete
   function blobField(st, octx, cols, rows, t, n, gain) {
@@ -52,7 +35,7 @@
   function asciiCanvas(cv, source, tint, opts) {
     const ctx = cv.getContext('2d'), box = cv.parentNode;
     const off = document.createElement('canvas'), octx = off.getContext('2d', { willReadFrequently: true });
-    let cols = 0, cw = 0, chh = 0, rowsN = 0, W = 0, H = 0;
+    let cols = 0, cw = 0, chh = 0, rowsN = 0, W = 0, H = 0, rgb = '0,0,0';
     function measure() {
       W = box.clientWidth; H = box.clientHeight;
       if (!W || !H) return false;
@@ -64,6 +47,7 @@
       off.width = cols; off.height = rowsN;
       ctx.font = Math.round(cw * 1.42) + 'px ui-monospace, Menlo, monospace';
       ctx.textBaseline = 'top';
+      rgb = getComputedStyle(cv).color.match(/[\d.]+/g).slice(0, 3).join(',');
       return true;
     }
     function draw(t) {
@@ -78,7 +62,7 @@
         if (opts.lift) lum = Math.pow(lum, opts.lift); // alza i mezzitoni: griglia piena
         const n = Math.sin(x * 12.9898 + y * 7.233 + t * 0.55) * 0.5 + 0.5;
         const q = Math.min(Math.max(0.18 + lum * 0.82 + (n - 0.5) * 0.11, 0), 1);
-        ctx.fillStyle = tint(x / cols, y / rowsN, lum);
+        ctx.fillStyle = `rgba(${rgb},${tint(lum)})`;
         ctx.fillText(CH[Math.round(q * (CH.length - 1))], x * cw, y * chh);
       }
     }
@@ -95,20 +79,20 @@
     if (!reduce) requestAnimationFrame(loop);
   }
 
-  // hot: bagliore verde con venature che scendono; cold: grigio, quasi fermo
+  // hot: bagliore con venature che scendono; cold: quasi fermo e più tenue. La funzione dà l'opacità del carattere.
   const kinds = {
     hot: st => [(octx, cols, rows, t) => {
       blobField(st, octx, cols, rows, t, 5, 0.82);
       octx.globalAlpha = .38;
       for (let i = 0; i < 22; i++) { octx.fillStyle = i % 3 ? '#242424' : '#8a8a8a'; octx.fillRect(0, ((i / 22) * rows + t * 0.45) % rows, cols, 1 + (i % 2)); }
       octx.globalAlpha = 1;
-    }, (xr, yr, lum) => { const c = ramp(RAMP_HOT, xr * 0.34 + lum * 0.66); return `rgba(${c},${0.14 + lum * 0.7})`; }, { interval: 70, lift: 0.72 }],
+    }, lum => 0.14 + lum * 0.7, { interval: 70, lift: 0.72 }],
     cold: st => [(octx, cols, rows, t) => {
       blobField(st, octx, cols, rows, t, 3, 0.66);
       octx.globalAlpha = .5;
       for (let i = 0; i < 26; i++) { octx.fillStyle = i % 2 ? '#333' : '#aaa'; octx.fillRect(0, ((Math.sin(i * 3.7 + t * 0.05) * 0.5 + 0.5) * rows + t * 0.4) % rows, cols, 1 + (i % 3)); }
       octx.globalAlpha = 1;
-    }, (xr, yr, lum) => { const c = ramp(RAMP_COLD, xr * 0.9 + lum * 0.1); return `rgba(${c},${0.06 + lum * 0.22})`; }, { interval: 60 }],
+    }, lum => 0.04 + lum * 0.16, { interval: 60 }],
   };
   document.querySelectorAll('canvas[data-ascii]').forEach(cv => {
     const [src, tint, opts] = kinds[cv.dataset.ascii]({});

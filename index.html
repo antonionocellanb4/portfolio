@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Antonio Nocella — Web developer e UI designer</title>
-<meta name="description" content="Antonio Nocella, web developer e UI designer a Bari. Siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI.">
+<meta name="description" content="Portfolio e CV di Antonio Nocella, web developer e UI designer a Bari: dieci anni in agenzia tra siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI.">
 <meta name="author" content="Antonio Nocella">
 <meta name="theme-color" content="#050505">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,7 @@
     --line: rgba(255,255,255,.12);
     --white: #FFF;
     --black: #050505;  /* testo sui fondi verdi e bianchi */
-    --accent: #D7FFE0;  /* verde menta: titoli e accenti */
+    --accent: #FF9030;  /* arancione: accenti */
     --radius: 6px;
     --control-radius: 999px;
     --gutter: clamp(16px, 3vw, 40px);
@@ -37,7 +37,7 @@
   a { color: inherit; text-decoration: none; }
   button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
   .wrap { max-width: 1520px; margin: 0 auto; padding: 0 var(--gutter); }
-  h1, h2, h3 { font-weight: 500; color: var(--accent); letter-spacing: -0.05em; line-height: .95; }
+  h1, h2, h3 { font-weight: 500; letter-spacing: -0.05em; line-height: .95; }
 
   /* etichette: font pixel, maiuscolo spaziato (VT323 è piccolo di suo: corpo più alto) */
   .px { font-family: var(--pixel); font-size: 19px; font-weight: 400; line-height: 1.1; text-transform: uppercase; letter-spacing: .04em; }
@@ -53,12 +53,16 @@
   .blk { display: inline-flex; align-items: center; justify-content: center; gap: 10px; height: var(--blk); padding: 0 24px; border-radius: var(--control-radius); font-family: var(--pixel); font-size: 21px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; transition: background .2s, color .2s; }
   .blk-light { background: var(--white); color: var(--black); }
   .blk-light:hover, .blk-dark:hover { background: var(--accent); color: var(--black); }
-  /* azione principale: verde pieno, testo nero per il contrasto */
+  /* azione principale: arancione pieno, testo nero per il contrasto */
   .blk-accent { background: var(--accent); color: var(--black); }
-  .blk-accent:hover { background: #FFFFFF; }
+  .blk-accent:hover { background: #FFB066; }
   ::selection { background: var(--accent); color: var(--black); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .asc { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+  .asc { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; color: var(--accent); } /* ascii.js usa questo colore */
+  /* un solo blocco arancione pieno: la chiusura. .warm capovolge i colori (fondo arancione, testo nero) */
+  .warm { --bg: #FF9030; --panel: #FF9030; --panel-2: #F2831F; --fg: #050505; --soft: #1A1A1A; --muted: #3B2A1C; --line: rgba(5,5,5,.28); --white: #050505; --black: #FF9030; --accent: #050505; background: var(--bg); color: var(--fg); }
+  .warm.shade::before { background: linear-gradient(0deg, rgba(255,144,48,.85) 0%, rgba(255,144,48,.3) 45%, rgba(255,144,48,0) 70%); }
+  .warm .overlay small, .warm .px-muted { color: var(--soft); }
   .blk-dark { background: var(--panel-2); color: var(--fg); }
 
   /* ---------- barra annunci ---------- */
@@ -73,6 +77,9 @@
     backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); mask-image: linear-gradient(180deg, #000 0%, #000 45%, rgba(0,0,0,.6) 68%, rgba(0,0,0,.2) 86%, transparent 100%); }
   .hdr.solid::before { opacity: 1; }
+  /* sopra il blocco arancione l'header si capovolge: fascia arancione, nome e bottoni neri */
+  .hdr.on-warm { --fg: #050505; --white: #050505; --black: #FF9030; --panel-2: #F2831F; color: var(--fg); }
+  .hdr.on-warm::before { background: linear-gradient(180deg, rgba(255,144,48,.94) 0%, rgba(255,144,48,.8) 40%, rgba(255,144,48,.45) 70%, rgba(255,144,48,0) 100%); }
   .brand { display: flex; align-items: center; gap: 16px; }
   .brand .word { font-size: 22px; font-weight: 500; letter-spacing: -0.04em; }
   .cluster { display: flex; gap: 8px; }
@@ -333,7 +340,6 @@
   <header><span class="px">Contatti</span><button class="close" data-close>Chiudi</button></header>
   <div class="body contact-list">
     <a class="line-item" href="mailto:antonio.nocella3@gmail.com"><div><strong>antonio.nocella3@gmail.com</strong><span class="px px-muted">Email</span></div><span class="px">↗</span></a>
-    <a class="line-item" href="tel:+393921939479"><div><strong>+39 392 193 9479</strong><span class="px px-muted">Telefono</span></div><span class="px">↗</span></a>
     <div class="line-item"><div><strong>Adelfia, Bari</strong><span class="px px-muted">Lavoro anche da remoto</span></div><span class="px">ITA</span></div>
   </div>
   <footer><a href="mailto:antonio.nocella3@gmail.com" class="blk blk-light">Scrivimi <span>→</span></a></footer>
@@ -354,7 +360,7 @@
         </div>
       </div>
       <div class="side">
-        <p>Sono Antonio Nocella. Siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI, dal 2016 a oggi.</p>
+        <p>Sono Antonio Nocella: dieci anni in agenzia tra siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI. Oggi in Never Before Italia, disponibile per una nuova esperienza.</p>
         <article class="feature-box">
           <div class="ph" data-label="Foto" id="fbPic"></div>
           <div class="fb-body">
@@ -413,7 +419,7 @@
             <h2>Non faccio siti belli e basta.</h2>
             <p>Faccio siti dove ogni scelta ha un motivo, e chi deve decidere capisce in dieci secondi. Seguo il progetto dall'inizio alla fine: disegno l'interfaccia, la sviluppo, la metto online e poi resto a mantenerla.</p>
           </div>
-          <a href="#contatti" class="blk blk-light">Parliamo del tuo progetto <span>→</span></a>
+          <a href="#contatti" class="blk blk-light">Contattami <span>→</span></a>
         </div>
       </div>
       <div class="services" id="services"></div>
@@ -444,16 +450,16 @@
   </section>
 
   <!-- CHIUSURA + CONTATTI -->
-  <section class="closing shade" id="contatti">
+  <section class="closing shade warm" id="contatti">
     <canvas class="asc" data-ascii="cold" aria-hidden="true"></canvas>
     <div class="overlay">
       <div class="wrap">
         <div class="copy">
-          <span class="px">Contatti · Lavoro anche da remoto</span>
-          <h2>Portiamoli dentro una squadra.</h2>
+          <span class="px">Contatti · Disponibile anche da remoto</span>
+          <h2>Pronto per una nuova squadra.</h2>
           <div class="ctas">
             <a href="mailto:antonio.nocella3@gmail.com" class="blk blk-accent">Scrivimi <span>↗</span></a>
-            <a href="tel:+393921939479" class="blk blk-dark">+39 392 193 9479</a>
+            <a href="#percorso" class="blk blk-dark">Il mio percorso <span>↑</span></a>
           </div>
           <small>antonio.nocella3@gmail.com · Adelfia, Bari</small>
         </div>
@@ -471,8 +477,8 @@
         <p>Web developer e UI designer a Bari. Siti aziendali, e-commerce, configuratori 3D, automazioni e integrazioni AI.</p>
       </div>
       <div><h4 class="px">Ultimi lavori</h4><ul id="footWorks"></ul></div>
-      <div><h4 class="px">Sezioni</h4><ul><li><a href="#lavori">Lavori</a></li><li><a href="#servizi">Cosa faccio</a></li><li><a href="#competenze">Competenze</a></li><li><a href="#percorso">Percorso</a></li></ul></div>
-      <div><h4 class="px">Contatti</h4><ul><li><a href="mailto:antonio.nocella3@gmail.com">Email</a></li><li><a href="tel:+393921939479">+39 392 193 9479</a></li><li>Adelfia, Bari</li></ul></div>
+      <div><h4 class="px">Sezioni</h4><ul><li><a href="#lavori">Lavori</a></li><li><a href="#servizi">Cosa so fare</a></li><li><a href="#competenze">Competenze</a></li><li><a href="#percorso">Percorso</a></li></ul></div>
+      <div><h4 class="px">Contatti</h4><ul><li><a href="mailto:antonio.nocella3@gmail.com">Email</a></li><li>Adelfia, Bari</li></ul></div>
       <div><a href="#" class="blk blk-dark to-top" aria-label="Torna su"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a></div>
     </div>
     <div class="legal px">
@@ -543,9 +549,12 @@
   const announce = $('.announce');
   const setAnn = () => document.documentElement.style.setProperty('--ann', announce.offsetHeight + 'px');
   setAnn(); addEventListener('resize', setAnn);
+  const blocks = [...document.querySelectorAll('main > section, footer.site')];
   const onScroll = () => {
     hdr.style.top = Math.max(announce.getBoundingClientRect().bottom, 0) + 'px';
     hdr.classList.toggle('solid', scrollY > 80);
+    const under = blocks.find(b => { const r = b.getBoundingClientRect(); return r.top <= 60 && r.bottom > 60; });
+    hdr.classList.toggle('on-warm', !!under && under.classList.contains('warm'));
     stack();
   };
 

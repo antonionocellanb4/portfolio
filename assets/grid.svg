@@ -292,9 +292,9 @@
 <line x1="0" y1="20" x2="1440" y2="20" stroke="#fff" stroke-opacity="0.14" />
 <line x1="20" y1="0" x2="20" y2="900" stroke="#fff" stroke-opacity="0.14" />
 <rect x="0" y="0" width="20" height="20" fill="#050505"/>
-<line x1="120" y1="20" x2="120" y2="900" stroke="#D7FFE0" stroke-opacity=".32" stroke-dasharray="6 6"/>
-<line x1="1320" y1="20" x2="1320" y2="900" stroke="#D7FFE0" stroke-opacity=".32" stroke-dasharray="6 6"/>
-<line x1="20" y1="450" x2="1440" y2="450" stroke="#D7FFE0" stroke-opacity=".32" stroke-dasharray="6 6"/>
+<line x1="120" y1="20" x2="120" y2="900" stroke="#FF9030" stroke-opacity=".32" stroke-dasharray="6 6"/>
+<line x1="1320" y1="20" x2="1320" y2="900" stroke="#FF9030" stroke-opacity=".32" stroke-dasharray="6 6"/>
+<line x1="20" y1="450" x2="1440" y2="450" stroke="#FF9030" stroke-opacity=".32" stroke-dasharray="6 6"/>
 <line x1="120" y1="64" x2="1320" y2="64" stroke="#fff" stroke-opacity="0.16" />
 <line x1="120" y1="59" x2="120" y2="69" stroke="#fff" stroke-opacity="0.16" />
 <line x1="1320" y1="59" x2="1320" y2="69" stroke="#fff" stroke-opacity="0.16" />
